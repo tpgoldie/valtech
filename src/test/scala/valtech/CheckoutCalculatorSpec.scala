@@ -54,5 +54,17 @@ class CheckoutCalculatorSpec extends FeatureSpec with GivenWhenThen with MustMat
       Then("the total cost is £0.00")
       totalCost must be("£0.00")
     }
+
+    scenario("Calculate the cost of a collection of apples and oranges and an unidentified products") {
+      Given("a collection of three apples, an one orange, and unidentified products")
+      And("an apple costs 60p and an orange cost 25p")
+      val items = Seq("Apple", "Apple", "Banana", "Orange", "Apple", "Banana")
+
+      When(s"the checkout calculator calculates the cost of the ${items.mkString(", ")}")
+      val totalCost = new CheckoutCalculator().calculateTotalCost(items)
+
+      Then("the total cost is £2.05")
+      totalCost must be("£2.05")
+    }
   }
 }

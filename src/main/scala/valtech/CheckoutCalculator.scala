@@ -4,7 +4,7 @@ class CheckoutCalculator {
   val productRepository: Map[String, BigDecimal] = Map("apple" -> BigDecimal("0.60"), "orange" -> BigDecimal("0.25"))
 
   def calculateTotalCost(items: Seq[String]): String = {
-    val totalCost = items.map(item => productRepository(item.toLowerCase)).fold(CheckoutCalculator.Zero)(_ + _)
+    val totalCost = items.map(item => productRepository.get(item.toLowerCase)).flatten.fold(CheckoutCalculator.Zero)(_ + _)
     "£%.2f".format(totalCost)
   }
 }
