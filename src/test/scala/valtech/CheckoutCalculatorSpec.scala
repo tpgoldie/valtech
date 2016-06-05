@@ -39,8 +39,8 @@ class CheckoutCalculatorSpec extends FeatureSpec with GivenWhenThen with MustMat
       When(s"the checkout calculator calculates the cost of the ${items.mkString(", ")}")
       val totalCost = new CheckoutCalculator().calculateTotalCost(items)
 
-      Then("the total cost is £1.20")
-      totalCost must be("£1.20")
+      Then("the total cost is £0.75")
+      totalCost must be("£0.75")
     }
   }
 }
